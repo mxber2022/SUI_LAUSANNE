@@ -4,8 +4,10 @@ module nftSwiss::revive {
     use sui::object::{Self, ID, UID};
     use sui::event;
     use sui::transfer;
+    use sui::coin::{Self, Coin};
     use sui::tx_context::{Self, TxContext};
-
+    use sui::sui::SUI;
+     
     struct Project has key, store {
         id: UID,
         project_name: string::String,
@@ -56,22 +58,33 @@ module nftSwiss::revive {
         transfer::public_transfer(nft, sender);
     }
 
-    /// Get the NFT's `project name`
+    // trasnfer Fund - the project
+    public entry fun transfer_token( coin: Coin<SUI>, recipient: address, amount:u64, _ctx: &mut TxContext){
+        let fees = coin::split(&mut coin, amount ,_ctx);
+        transfer::public_transfer(fees, recipient);
+
+        transfer::public_transfer(coin, tx_context::sender(_ctx));
+    }
+
+    
+
+
+    // Get the NFT's `project name`
     public fun get_project_name(nft: &Project): &string::String {
         &nft.project_name
     }
 
-    /// Get the NFT's `github name`
+    // Get the NFT's `github name`
     public fun get_github(nft: &Project): &string::String {
         &nft.github
     }
 
-    /// Get the NFT's `founder`
+    // Get the NFT's `founder`
     public fun get_founder(nft: &Project): &string::String {
         &nft.founder
     }
 
-    /// Get the NFT's `url`
+    // Get the NFT's `url`
     public fun url(nft: &Project): &Url {
         &nft.url
     }
