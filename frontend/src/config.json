@@ -1,5 +1,5 @@
 {
-    "CONTRACT_ADDRESS": "0x0965af0c6a08a45a4a437fe55410f875a1d30737047eb2075f68453c62028db4",
-    "CONTRACT_MODULE": "nft_example",
-    "CONTRACT_METHOD": "mint_to_sender"
+    "CONTRACT_ADDRESS": "0x0c6fb924cb8859708ad03f198ef6a3a7cab9eab204118f013226bb5bb0ec64dd",
+    "CONTRACT_MODULE": "revive",
+    "CONTRACT_METHOD": "mint"
 }

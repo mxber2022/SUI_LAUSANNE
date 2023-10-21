@@ -1,7 +1,10 @@
 import "./Revive.css";
-import {useWallet} from '@suiet/wallet-kit';
 import { useEffect } from "react";
 import React, { useState } from 'react';
+
+import { TransactionBlock } from "@mysten/sui.js";
+import config from '../../config.json';
+import {useWallet} from '@suiet/wallet-kit';
 
 function Revive () {
     const wallet = useWallet();
@@ -12,14 +15,49 @@ function Revive () {
     const [fundingAddress, setFundingAddress] = useState(''); // fund this address directly
     const [imageUrl, setImageUrl] = useState(''); // project image uri
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         /* 
             Handle the form submission logic here
             Mint the following project
         */ 
         console.log({ projectName, github, founder, fundingAddress, imageUrl});
+        mint()
       };
+
+    
+      function createMintNftTxnBlock() { 
+        const tx = new TransactionBlock();
+
+        tx.moveCall({
+            target: `${config.CONTRACT_ADDRESS}::${config.CONTRACT_MODULE}::${config.CONTRACT_METHOD}`,
+            arguments: [
+                tx.pure(projectName),
+                tx.pure(github),
+                tx.pure(founder),
+                tx.pure(fundingAddress),
+                tx.pure(imageUrl),
+            ],
+        });
+        console.log("TX: ", tx);
+
+        return tx;
+    }
+
+
+    async function mint() {
+        const txb = createMintNftTxnBlock();
+        try {
+            const res = await wallet.signAndExecuteTransactionBlock({
+              transactionBlock: txb,
+            });
+            console.log("nft minted successfully!", res);
+            alert("Congrats! your nft is minted!");
+          } catch (e) {
+            alert("Oops, nft minting failed");
+            console.error("nft mint failed", e);
+          }
+    }  
 
     useEffect(() => {
         if (!wallet.connected) return;
