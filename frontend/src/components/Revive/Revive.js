@@ -64,7 +64,12 @@ function Revive () {
 
     return(
         <>
-    <h2>List your project</h2>
+<div className="reviveForm">
+          <div className="reviveForm__container">
+            <h2 className="reviveForm__title">List your project</h2>
+
+
+  
     <form onSubmit={handleSubmit}>
       <div>
         <label>
@@ -118,6 +123,8 @@ function Revive () {
       </div>
       <button type="submit">List Project</button>
     </form>
+    </div>
+        </div> 
 
         </> 
     );

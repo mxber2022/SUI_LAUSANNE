@@ -1,0 +1,124 @@
+.reviveForm {
+
+    padding: 5rem 0;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.reviveForm .header__animation {
+
+    z-index: 0;
+}
+
+
+.reviveForm__container {
+
+    max-width: 95vw;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+
+.reviveForm__title {
+
+    font-size: 3rem;
+    line-height: 4rem;
+    color: #fff;
+    padding-bottom: 1rem;
+    margin-bottom: 4rem;
+    position: relative;
+    max-width: max-content;
+}
+
+.reviveForm__title::before {
+
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 70%;
+    height: 1px;
+    background: #fff; 
+}
+
+
+.reviveForm form {
+
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    color: #fff;
+    max-width: 800px;
+    gap: 2rem;
+}
+
+.reviveForm form > div label{
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.reviveForm form button {
+
+    grid-column: 1 /span 2;
+    margin-top: 1rem;
+
+    border: unset;
+    color: #fff;
+    display: inline-block;
+    width: max-content;
+    padding: 1.3rem 3rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+
+    background: linear-gradient(-45deg, #ffa63d, #ff3d77, #338aff, #3cf0c5);
+          background-size: 600%;
+          -webkit-animation: anime 16s linear infinite;
+        animation: anime 16s linear infinite !important;
+}
+
+.reviveForm form button:hover {
+
+    transform: translateY(-10px);
+    transition: all 0.2s ease-in;
+}
+
+.reviveForm form input:focus-visible {
+
+    outline: unset;
+}
+
+.reviveForm form input {
+
+    background-color: unset;
+    border: 1px solid #fff;
+    padding: 1rem;
+    color: #fff;
+}
+
+
+
+@-webkit-keyframes anime {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes anime {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  

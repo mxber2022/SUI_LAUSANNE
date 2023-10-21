@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Connection, Ed25519Keypair, JsonRpcProvider, RawSigner, TransactionBlock } from "@mysten/sui.js";
 import { rpcClient } from "typed-rpc";
 import config from '../../config.json';
+import testImage from "./Assets/revive.png";
 import {useWallet} from '@suiet/wallet-kit';
 const GAS_BUDGET = 5000000;
 const SPONSOR_RPC_URL = "https://api.shinami.com/gas/v1/sui_testnet_5cdc30f2b85b2611f3945a2ae400f71f";
@@ -65,9 +66,20 @@ function GetAllProjects() {
 
     return(
         <>
-            <h2>Choose the project to fund</h2>
-            <div>
-            <label htmlFor="amount">Enter Amount:</label>
+            <div className="projects">
+             {/* <div className="header__animation"></div> */}
+            <div className="projects__container">
+                <h2 className="projects__title">Choose the project to fund</h2>
+                <div className="projects__content">
+                    <div className="projects__img">
+                        
+                        <img src={testImage} alt=""/>
+                    </div>
+                    <div className="projects__form">
+                        <div className="projects__inputs">
+
+                        <p>Project Name: Ava</p>
+                        <p>Github: https://github.com/mxber2022</p>
             <input
                 type="text"
                 id="amount"
@@ -76,8 +88,15 @@ function GetAllProjects() {
                 placeholder="Enter amount to fund"
                 
             />
+            
             </div>
+            
             <button onClick={handleInputChange}>Fund</button>
+
+            </div>
+                </div>
+            </div>
+        </div>
         </>
     )
 }

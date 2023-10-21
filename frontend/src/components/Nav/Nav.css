@@ -1,8 +1,3 @@
-.wkit-button {
-    background-color: #a1a09f !important;
-    font-size: 20px !important;
-}
-
 .wkit-button,
 .wkit-connected-button {
 
@@ -24,7 +19,7 @@
     color: #fff !important;
 }
 
-.wkit-disconnect-button_container {
+.wkit-disconnect-button__container {
 
     border-radius: unset !important;
 }
@@ -57,7 +52,7 @@
     z-index: -1;
 }
 
-.nav_container {
+.nav__container {
 
     display: flex;
     justify-content: space-between;
@@ -66,12 +61,15 @@
 }
 
 
-.nav_logo {
+.nav__logo {
 
     font-size: 2rem;
     font-weight: 700;
     color: #fff;
 }
+
+
+
 
 
 @-webkit-keyframes anime {
@@ -97,7 +95,3 @@
   }
 }
 
-.wkit-dialog__overlay {
-
-  z-index: 9999999 !important;
-}
