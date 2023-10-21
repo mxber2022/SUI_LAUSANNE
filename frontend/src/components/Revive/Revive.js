@@ -51,11 +51,9 @@ function Revive () {
             const res = await wallet.signAndExecuteTransactionBlock({
               transactionBlock: txb,
             });
-            console.log("nft minted successfully!", res);
-            alert("Congrats! your nft is minted!");
+            console.log("project successfully listed!", res);
           } catch (e) {
-            alert("Oops, nft minting failed");
-            console.error("nft mint failed", e);
+            console.error("listing failed", e);
           }
     }  
 

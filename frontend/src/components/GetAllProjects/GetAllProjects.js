@@ -30,7 +30,7 @@ function GetAllProjects() {
                 id="amount"
                 value={amount}
                 onChange={handleInputChange}
-                placeholder="Enter a number"
+                placeholder="Enter amount to fund"
             />
             </div>
             <button>Fund</button>
