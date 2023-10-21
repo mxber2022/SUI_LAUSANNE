@@ -93,7 +93,7 @@ function Revive () {
       </div>
       <div>
         <label>
-          Founder:
+          Image URL:
           <input
             type="text"
             value={founder}
@@ -113,7 +113,7 @@ function Revive () {
       </div>
       <div>
         <label>
-          Image URL:
+          External URL:
           <input
             type="text"
             value={imageUrl}

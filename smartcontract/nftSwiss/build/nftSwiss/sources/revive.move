@@ -21,7 +21,7 @@ module nftSwiss::revive {
         id: UID,
         project_name: string::String,
         github: string::String,
-        founder: string::String,
+        image_url: string::String,
         funding_address: string::String,
         url: Url,
     }
@@ -32,7 +32,7 @@ module nftSwiss::revive {
         let keys = vector[
             utf8(b"project_name"),
             utf8(b"github"),
-            utf8(b"founder"),
+            utf8(b"image_url"),
             utf8(b"funding_address"),
             utf8(b"url"),
         ];
@@ -41,7 +41,7 @@ module nftSwiss::revive {
             // For `name` we can use the `Hero.name` property
             utf8(b"{project_name}"),
             utf8(b"{github}"),
-            utf8(b"{founder}"),
+            utf8(b"{image_url}"),
             utf8(b"{funding_address}"),
             utf8(b"{url}"),
         ];
@@ -68,7 +68,7 @@ module nftSwiss::revive {
         creator: address,
         project_name: string::String,
         github: string::String,
-        founder: string::String,
+        image_url: string::String,
         funding_address: string::String,
         url: Url,
     }
@@ -77,7 +77,7 @@ module nftSwiss::revive {
     public entry fun mint(
         project_name: vector<u8>,
         github: vector<u8>,
-        founder: vector<u8>,
+        image_url: vector<u8>,
         funding_address: vector<u8>,
         url: vector<u8>,
         ctx: &mut TxContext
@@ -86,7 +86,7 @@ module nftSwiss::revive {
             id: object::new(ctx),
             project_name: string::utf8(project_name),
             github: string::utf8(github),
-            founder: string::utf8(founder),
+            image_url: string::utf8(image_url),
             funding_address: string::utf8(funding_address),
             url: url::new_unsafe_from_bytes(url)
         };
@@ -96,7 +96,7 @@ module nftSwiss::revive {
             creator: sender,
             project_name: nft.project_name,
             github: nft.github,
-            founder: nft.founder,
+            image_url: nft.image_url,
             funding_address: nft.funding_address,
             url: nft.url
         });
@@ -123,9 +123,9 @@ module nftSwiss::revive {
         &nft.github
     }
 
-    // Get the NFT's `founder`
-    public fun get_founder(nft: &Project): &string::String {
-        &nft.founder
+    // Get the NFT's `image_url`
+    public fun get_image_url(nft: &Project): &string::String {
+        &nft.image_url
     }
 
     // Get the NFT's `url`
