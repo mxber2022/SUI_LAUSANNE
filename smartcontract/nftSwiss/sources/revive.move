@@ -66,8 +66,6 @@ module nftSwiss::revive {
         transfer::public_transfer(coin, tx_context::sender(_ctx));
     }
 
-    
-
 
     // Get the NFT's `project name`
     public fun get_project_name(nft: &Project): &string::String {
