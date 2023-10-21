@@ -28,7 +28,7 @@ function Revive () {
 
     return(
         <>
-    <p>List your project</p>
+    <h2>List your project</h2>
     <form onSubmit={handleSubmit}>
       <div>
         <label>
