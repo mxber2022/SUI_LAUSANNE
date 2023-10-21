@@ -1,6 +1,6 @@
 # SUI_LAUSANNE
  
-# Revive: A Fundraising Platform for Hackers all around the world. Because every idea deserves a chance.
+# Revive: Every idea deserves a chance.
 
 ![Revive Logo](path_to_logo_image.png)
 
