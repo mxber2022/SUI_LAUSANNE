@@ -1,0 +1,25 @@
+---
+compiled_package_info:
+  package_name: nftSwiss
+  address_alias_instantiation:
+    nftSwiss: "0000000000000000000000000000000000000000000000000000000000000000"
+    std: "0000000000000000000000000000000000000000000000000000000000000001"
+    sui: "0000000000000000000000000000000000000000000000000000000000000002"
+  source_digest: 51C3E125471C36FFB7A02AE5A448BA54F0E221D4E158FA496F1485AC791687F0
+  build_flags:
+    dev_mode: false
+    test_mode: false
+    generate_docs: false
+    generate_abis: false
+    install_dir: ~
+    force_recompilation: false
+    lock_file: "./Move.lock"
+    additional_named_addresses: {}
+    fetch_deps_only: false
+    skip_fetch_latest_git_deps: false
+    default_flavor: sui
+    default_edition: ~
+    deps_as_root: false
+dependencies:
+  - MoveStdlib
+  - Sui
