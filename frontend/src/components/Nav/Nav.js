@@ -16,6 +16,7 @@ function Nav () {
 
     return(
         <>
+            <h1>REVIVE</h1>
             <ConnectButton/>
         </> 
     );
