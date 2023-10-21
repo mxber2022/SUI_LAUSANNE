@@ -6,8 +6,16 @@ module nftSwiss::revive {
     use sui::transfer;
     use sui::coin::{Self, Coin};
     use sui::tx_context::{Self, TxContext};
+    use sui::tx_context::{sender};
     use sui::sui::SUI;
-     
+
+    use sui::package;
+    use sui::display;
+    use std::string::{utf8};
+
+    
+
+
     struct Project has key, store {
         id: UID,
         project_name: string::String,
@@ -16,6 +24,42 @@ module nftSwiss::revive {
         funding_address: string::String,
         url: Url,
     }
+
+    struct REVIVE has drop {}
+
+    fun init(otw: REVIVE, ctx: &mut TxContext) {
+        let keys = vector[
+            utf8(b"project_name"),
+            utf8(b"github"),
+            utf8(b"founder"),
+            utf8(b"funding_address"),
+            utf8(b"url"),
+        ];
+
+    let values = vector[
+            // For `name` we can use the `Hero.name` property
+            utf8(b"{project_name}"),
+            utf8(b"{github}"),
+            utf8(b"{founder}"),
+            utf8(b"{funding_address}"),
+            utf8(b"{url}"),
+        ];
+
+        // Claim the `Publisher` for the package!
+        let publisher = package::claim(otw, ctx);
+
+        // Get a new `Display` object for the `Hero` type.
+        let display = display::new_with_fields<Project>(
+            &publisher, keys, values, ctx
+        );
+
+        // Commit first version of `Display` to apply changes.
+        display::update_version(&mut display);
+
+        transfer::public_transfer(publisher, sender(ctx));
+        transfer::public_transfer(display, sender(ctx));
+    }
+
 
     struct MintNFTEvent has copy, drop {
         object_id: ID,
@@ -57,6 +101,7 @@ module nftSwiss::revive {
         });
         transfer::public_transfer(nft, sender);
     }
+
 
     // trasnfer Fund - the project
     public entry fun transfer_token( coin: Coin<SUI>, recipient: address, amount:u64, _ctx: &mut TxContext){

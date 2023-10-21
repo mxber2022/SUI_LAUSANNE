@@ -1,0 +1,282 @@
+
+
+
+.header {
+
+    height: 100vh;
+    width: 100%;
+    /* background-image: url('./Assets/revive.png'); */
+    background-size: cover;
+    position: relative;
+    background-position: center center;
+    background-color: #000;
+    overflow: hidden;
+}
+
+
+ .header::before {
+
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    z-index: 1;
+} 
+
+
+.header__container {
+
+    max-width: 95vw;
+    padding: 0 2rem;
+    margin: 0 auto;
+    display: flex;
+    height: 100%;
+    z-index: 9;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.header__content {
+
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 4rem;
+}
+
+.header__img {
+
+    width: calc(50% - 5vw);
+    z-index: 9999;
+    margin-right: -5vw;
+    position: relative;
+}
+
+.header__img::before {
+
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.2;
+}
+
+.header__img img {
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.header__title {
+
+    font-size: 4.6rem;
+    line-height: 5.5rem;
+    max-width: 800px;
+    z-index: 5;
+    color: #fff;
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+
+
+.header [type="button"]{
+
+    z-index: 999999 !important;
+    width: max-content;
+    transition: all 0.2s ease-in;
+}
+
+.header [type="button"]:hover {
+
+    transform: translateY(-10px);
+    transition: all 0.2s ease-in;
+}
+
+
+.header__animation {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+    height: 1500px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    z-index: 0;
+  }
+  .header__animation::before {
+    content: url('./Assets/fire-shape.png');
+    -webkit-transform: scale(3);
+    transform: scale(3);
+    position: absolute;
+    bottom: -30%;
+    right: 20%;
+    opacity: 60%;
+    -webkit-animation-name: orangebox;
+    animation-name: orangebox;
+    -webkit-animation-duration: 20s;
+    animation-duration: 20s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+  }
+  .header__animation::after {
+    content: url('./Assets/fire-shape-2.png');
+    transform: scale(2.5);
+    position: absolute;
+    bottom: -50%;
+    right: -20%;
+    opacity: 60%;
+    -webkit-animation-name: redbox;
+    animation-name: redbox;
+    -webkit-animation-duration: 23s;
+    animation-duration: 23s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+  }
+
+
+ @-webkit-keyframes orangebox {
+    0% {
+      bottom: -30%;
+      right: 20%;
+      opacity: 60%;
+    }
+    20% {
+      bottom: 20%;
+      right: 40%;
+      opacity: 85%;
+    }
+    40% {
+      bottom: 50%;
+      right: 70%;
+      opacity: 100%;
+    }
+    60% {
+      bottom: 30%;
+      right: 20%;
+      opacity: 100%;
+    }
+    80% {
+      bottom: 0%;
+      right: 0%;
+      opacity: 70%;
+    }
+    100% {
+      bottom: -30%;
+      right: 20%;
+      opacity: 60%;
+    }
+  }
+  @keyframes orangebox {
+    0% {
+      bottom: -30%;
+      right: 20%;
+      opacity: 60%;
+    }
+    20% {
+      bottom: 20%;
+      right: 40%;
+      opacity: 85%;
+    }
+    40% {
+      bottom: 50%;
+      right: 70%;
+      opacity: 100%;
+    }
+    60% {
+      bottom: 30%;
+      right: 20%;
+      opacity: 100%;
+    }
+    80% {
+      bottom: 0%;
+      right: 0%;
+      opacity: 70%;
+    }
+    100% {
+      bottom: -30%;
+      right: 20%;
+      opacity: 60%;
+    }
+  }
+  @-webkit-keyframes redbox {
+    0% {
+      bottom: -50%;
+      right: -20%;
+      opacity: 60%;
+    }
+    20% {
+      bottom: 0%;
+      right: 0%;
+      opacity: 85%;
+    }
+    40% {
+      bottom: 100%;
+      right: 0%;
+      opacity: 90%;
+    }
+    60% {
+      bottom: 50%;
+      right: 0%;
+      opacity: 90%;
+    }
+    80% {
+      bottom: 0%;
+      right: -10%;
+      opacity: 70%;
+    }
+    100% {
+      bottom: -50%;
+      right: -20%;
+      opacity: 60%;
+    }
+  }
+  @keyframes redbox {
+    0% {
+      bottom: -50%;
+      right: -20%;
+      opacity: 60%;
+    }
+    20% {
+      bottom: 0%;
+      right: 0%;
+      opacity: 85%;
+    }
+    40% {
+      bottom: 100%;
+      right: 0%;
+      opacity: 90%;
+    }
+    60% {
+      bottom: 50%;
+      right: 0%;
+      opacity: 90%;
+    }
+    80% {
+      bottom: 0%;
+      right: -10%;
+      opacity: 70%;
+    }
+    100% {
+      bottom: -50%;
+      right: -20%;
+      opacity: 60%;
+    }
+  } 

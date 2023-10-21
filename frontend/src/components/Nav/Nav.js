@@ -15,10 +15,12 @@ function Nav () {
     [wallet.connected])
 
     return(
-        <>
-            <h1>REVIVE</h1>
-            <ConnectButton/>
-        </> 
+        <nav className="nav">
+            <div className="nav__container">
+                <p className="nav__logo">REVIVE</p>
+                <ConnectButton/>
+            </div>
+        </nav> 
     );
 }
 

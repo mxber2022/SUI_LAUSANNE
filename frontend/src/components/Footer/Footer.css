@@ -1,0 +1,30 @@
+.footer {
+
+    background-color: #000;
+    color: #fff;
+    padding: 3rem 0;
+    position: relative;
+}
+
+.footer::before {
+
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff; 
+}
+
+.footer__container {
+
+    max-width: 95vw;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer__copyright {
+
+    text-transform: uppercase;
+} 

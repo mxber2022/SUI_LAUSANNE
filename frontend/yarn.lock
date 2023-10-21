@@ -9617,6 +9617,11 @@ typed-array-length@^1.0.4:
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
 
+typed-rpc@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/typed-rpc/-/typed-rpc-4.1.0.tgz#b395830990b6238b4540d3418966298bcf545aad"
+  integrity sha512-4ev2BjX7WWTlolRm0+CDs35qeMi4Mq2tY6zL3IWMH9KIiHKTLkEEO0OkSTGoXuCpA0iYWkOd8HxxSTiNIXNl+A==
+
 typedarray-to-buffer@^3.1.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/typedarray-to-buffer/-/typedarray-to-buffer-3.1.5.tgz#a97ee7a9ff42691b9f783ff1bc5112fe3fca9080"
