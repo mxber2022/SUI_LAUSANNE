@@ -6,15 +6,19 @@ import React, { useState } from 'react';
 function Revive () {
     const wallet = useWallet();
     
-    const [projectName, setProjectName] = useState('');
-    const [github, setGithub] = useState('');
-    const [founder, setFounder] = useState('');
-    const [fundingAddress, setFundingAddress] = useState('');
+    const [projectName, setProjectName] = useState(''); // project name
+    const [github, setGithub] = useState(''); // github address
+    const [founder, setFounder] = useState(''); // founder name
+    const [fundingAddress, setFundingAddress] = useState(''); // fund this address directly
+    const [imageUrl, setImageUrl] = useState(''); // project image uri
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle the form submission logic here
-        console.log({ projectName, github, founder, fundingAddress });
+        /* 
+            Handle the form submission logic here
+            Mint the following project
+        */ 
+        console.log({ projectName, github, founder, fundingAddress, imageUrl});
       };
 
     useEffect(() => {
@@ -66,8 +70,19 @@ function Revive () {
           />
         </label>
       </div>
-      <button type="submit">Submit</button>
+      <div>
+        <label>
+          Image URL:
+          <input
+            type="text"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+          />
+        </label>
+      </div>
+      <button type="submit">List Project</button>
     </form>
+
         </> 
     );
 }
