@@ -5,12 +5,6 @@ import { rpcClient } from "typed-rpc";
 import config from '../../config.json';
 import testImage from "./Assets/revive.png";
 import {useWallet} from '@suiet/wallet-kit';
-const GAS_BUDGET = 5000000;
-const SPONSOR_RPC_URL = "https://api.shinami.com/gas/v1/sui_testnet_5cdc30f2b85b2611f3945a2ae400f71f";
-const connection = new Connection({
-    fullnode: 'https://api.shinami.com/node/v1/<NODE_ACCESS_KEY>'
-});
-const suiProvider = new JsonRpcProvider(connection);
 
 
 function GetAllProjects() {
@@ -64,6 +58,48 @@ function GetAllProjects() {
 
 
 
+
+
+    const sponsorTransactionE2E = async() => {
+        const GAS_BUDGET = 5000000;
+    const SPONSOR_RPC_URL = "https://api.shinami.com/gas/v1/sui_testnet_53bc2755a0ab1939c18eff58ca113890";
+    const connection = new Connection({
+        fullnode: 'https://api.shinami.com/node/v1/sui_testnet_53bc2755a0ab1939c18eff58ca113890'
+    });
+    const suiProvider = new JsonRpcProvider(connection);
+    const SENDER_ADDRESS = "0x269bb08cdd23d27502aedb3129214e086d78981c2e79a9e2aae0ab84a2975a66";
+    const RECOVERY_PHRASE = "0xf8d897d377c0cbf3b29d8187d682180155915f435103a0f341c4350874ff80c5";
+
+    // Or create it from the sender's recovery phrase
+    const keyPair = Ed25519Keypair.deriveKeypair("parade ghost vocal off august infant machine jar bullet rocket spell brain");
+
+    // Create a signer for the sender's keypair
+    const signer = new RawSigner(keyPair, suiProvider);
+
+        const gaslessTxb = createMintNftTxnBlock();
+        const gaslessPayloadBytes = await gaslessTxb.build({ provider: suiProvider, onlyTransactionKind: true});
+        
+        
+
+
+        
+        const sponsor = rpcClient(SPONSOR_RPC_URL);
+    // convert the byte array to a base64 encoded string
+        const gaslessPayloadBase64 = btoa(
+            gaslessPayloadBytes
+                .reduce((data, byte) => data + String.fromCharCode(byte), '')
+        );
+
+        // Send the gasless programmable payload to Shinami Gas Station for sponsorship, along with the sender and budget
+        const sponsoredResponse = await sponsor.gas_sponsorTransactionBlock(gaslessPayloadBase64, SENDER_ADDRESS, GAS_BUDGET);
+
+        // The transaction should be sponsored now, so its status will be "IN_FLIGHT"
+        const sponsoredStatus = await sponsor.gas_getSponsoredTransactionBlockStatus(sponsoredResponse.txDigest);
+        console.log("Sponsorship Status:", sponsoredStatus);
+    }
+
+
+
     return(
         <>
             <div className="projects">
@@ -78,8 +114,8 @@ function GetAllProjects() {
                     <div className="projects__form">
                         <div className="projects__inputs">
 
-                        <p>Project Name: Ava</p>
-                        <p>Github: https://github.com/mxber2022</p>
+                        <p>Project Name: Revive</p>
+                        <p>Github: https://github.com/mxber2022/SUI_LAUSANNE</p>
             <input
                 type="text"
                 id="amount"
@@ -92,7 +128,8 @@ function GetAllProjects() {
             </div>
             
             <button onClick={handleInputChange}>Fund</button>
-
+            
+            
             </div>
                 </div>
             </div>
